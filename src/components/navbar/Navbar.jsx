@@ -1,6 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Navbar = () => {
@@ -16,9 +15,9 @@ const Navbar = () => {
 
     useEffect(() => {
 
-        
+
         if (user) {
-            
+
             // setLoading(true)
 
             fetch(`http://localhost:3000/api/users/${user?.email}`, {
@@ -33,7 +32,7 @@ const Navbar = () => {
                     setIsAdmin(data)
                     setLoading(false)
                 })
-                // .finally(() => setLoading(false))
+            // .finally(() => setLoading(false))
         }
 
         // setLoading(false)
@@ -104,16 +103,7 @@ const Navbar = () => {
                                                 <Link to="/">
                                                     LOGOUT
                                                 </Link>
-                                            </li>
-
-                                            <li>
-                                                <NavLink
-                                                    to="/users"
-                                                    className={({ isActive }) => isActive ? "text-[#5f01f2] " : ""}
-                                                >
-                                                    USERS
-                                                </NavLink>
-                                            </li>
+                                            </li>   
                                         </>
                                     ) : (
                                         <>

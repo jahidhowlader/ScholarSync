@@ -17,35 +17,6 @@ const SocialLogin = () => {
             // SIGNUP OR SIGNIN WITH GOOGLE
             await googleSignin()
             navigate('/')
-                // .then(async (result) => {
-
-                //     const loggedInUser = result.user;
-
-                // STORE USER DATA ON MongoDB
-                //     await fetch('https://snap-academy-server.vercel.app/allUsers', {
-                //         method: 'POST',
-                //         headers: {
-                //             'content-type': 'application/json'
-                //         },
-                //         body: JSON.stringify({ name: loggedInUser.displayName, email: loggedInUser.email, role: 'user' })
-                //     })
-                //         .then(res => res.json())
-                //         .then(() => {
-
-                //             toast.success('Successfully Signin.');
-                //             navigate('/');
-                //         })
-                //         .catch(e => {
-                //             toast.error(e);
-                //             console.log(e);
-                //         })
-                // })
-                // .catch(e => {
-                //     toast.error(e);
-                //     console.log(e);
-                // })
-
-
 
         } catch (e) {
             console.log(e);

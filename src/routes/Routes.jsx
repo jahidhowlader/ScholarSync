@@ -4,7 +4,7 @@ import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/home/Home";
 import Register from "../pages/register/Register";
 import Login from "../pages/login/Login";
-import Users from "../pages/Users";
+import AddCourse from "../pages/dashboard/addCourse/AddCourse";
 
 export const router = createBrowserRouter([
     {
@@ -29,15 +29,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/addCourse',
-                element: ''
+                element: <AddCourse />
             },
             {
                 path: '/appliedList',
                 element: ''
-            },
-            {
-                path: '/users',
-                element: <Users />
             }
         ]
     }
