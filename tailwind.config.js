@@ -9,7 +9,8 @@ export default {
     colors: {
       'primary-color': '#5D01EE',
       'black': '#010717',
-      'white': '#fff'
+      'white': '#fff',
+      'error': '#F23030'
     }
   },
   plugins: [],
