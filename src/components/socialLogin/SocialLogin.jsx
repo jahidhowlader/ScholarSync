@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import toast from "react-hot-toast";
 
 const SocialLogin = () => {
 
@@ -24,14 +23,15 @@ const SocialLogin = () => {
     }
     return (
         <>
-            <div className='relative w-3/4'>
-                <hr className='border border-opacity-30 border-primary-color my-20' />
-                <p className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#00081f] px-3'>OR</p>
+            <div className='flex items-center w-1/2 lg:w-3/4 lg:px-5'>
+                <hr className='border border-opacity-30 border-primary-color my-20 w-full' />
+                <p className='px-3'>OR</p>
+                <hr className='border border-opacity-30 border-primary-color my-20 w-full' />
             </div>
 
             <div
                 onClick={handlerGoogleSignin}
-                className='flex justify-center w-3/4 cursor-pointer'
+                className='flex justify-center w-full lg:w-3/4 cursor-pointer lg:mr-5 lg:px-5'
             >
                 <div className='flex items-center gap-3 border border-primary-color px-5 py-2 rounded-full'>
                     <img src="/Google__G__logo.svg.png" alt="google image" className='w-5 h-5 object-cover' />

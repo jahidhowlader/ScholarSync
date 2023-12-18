@@ -92,15 +92,13 @@ const Register = () => {
         <>
             {/* Ttile */}
             <Helmet>
-                <title>Signup | Snap Academy</title>
+                <title>Register | Snap Academy</title>
             </Helmet>
 
-            <div className="my-container text-white min-h-[calc(100vh-90px)] grid grid-cols-2 items-center relative">
+            <div className="my-container text-white min-h-[calc(100vh-90px)] grid lg:grid-cols-2 items-center relative">
 
-                <div className='flex flex-col justify-center'>
-                    {/* <h3 className='text-center text-primary-color text-2xl font-semibold mb-5'>REGISTER</h3> */}
-                    {/* <hr className='border border-opacity-30 border-primary-color w-1/2 my-10'/> */}
-
+                <div className='flex flex-col justify-center items-center'>
+    
                     {/* Main Content */}
                     <div className="">
 
@@ -215,7 +213,7 @@ const Register = () => {
                     <SocialLogin />
                 </div>
 
-                <div className='space-y-3 ml-20 -mt-40'>
+                <div className='space-y-3 ml-20 -mt-40 hidden lg:block'>
 
                     <h3 className='text-2xl font-semibold'>Welcome to SCHOLARSYNC</h3>
                     <h1 className='text-4xl font-semibold'>Registration</h1>

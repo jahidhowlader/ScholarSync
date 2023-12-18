@@ -5,6 +5,8 @@ import Home from "../pages/home/Home";
 import Register from "../pages/register/Register";
 import Login from "../pages/login/Login";
 import AddCourse from "../pages/dashboard/addCourse/AddCourse";
+import AppliedListClient from "../pages/dashboard/appliedListClient/AppliedListClient";
+import AppliedListAdmin from "../pages/dashboard/appliedListAdmin/AppliedListAdmin";
 
 export const router = createBrowserRouter([
     {
@@ -24,16 +26,16 @@ export const router = createBrowserRouter([
                 element: <Register />
             },
             {
-                path: '/applyList',
-                element: ''
+                path: '/appliedListClient',
+                element: <AppliedListClient />
             },
             {
                 path: '/addCourse',
                 element: <AddCourse />
             },
             {
-                path: '/appliedList',
-                element: ''
+                path: '/appliedListAdmin',
+                element: <AppliedListAdmin />
             }
         ]
     }

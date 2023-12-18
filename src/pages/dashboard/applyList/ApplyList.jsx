@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const ApplyList = () => {
 
@@ -12,9 +13,12 @@ const ApplyList = () => {
     axios.get('http://localhost:3000/api/auth/login')
 
     return (
-        <div>
-
-        </div>
+        <>
+            {/* Ttile */}
+            <Helmet>
+                <title>Applied List | Snap Academy</title>
+            </Helmet>
+        </>
     );
 };
 
