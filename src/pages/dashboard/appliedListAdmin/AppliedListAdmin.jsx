@@ -2,6 +2,7 @@ import { RiForbid2Line } from 'react-icons/ri';
 import { Helmet } from 'react-helmet-async';
 import toast from 'react-hot-toast';
 import useFetchWithHeader from '../../../hooks/useFetchWithHeader';
+import Loader from '../../../components/loader/Loader';
 
 const AppliedListAdmin = () => {
 
@@ -58,11 +59,11 @@ const AppliedListAdmin = () => {
             </Helmet>
 
             {
-                loading ? 'loading' : (
+                loading ? <Loader /> : (
                     <section className="my-20 my-container text-white px-5 sm:px-10">
 
                         {
-                            !appliedList?.length ? (<>
+                            appliedList?.length < 1 ? (<>
                                 <div className="flex flex-col justify-center items-center ">
                                     <h1 className="text-2xl sm:text-3xl font-bold text-center ">
                                         Applied List

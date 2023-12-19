@@ -3,6 +3,7 @@ import useAuth from '../../../hooks/useAuth';
 import './appliedListClient.css'
 import { RiForbid2Line } from "react-icons/ri";
 import useFetchWithHeader from '../../../hooks/useFetchWithHeader';
+import Loader from '../../../components/loader/Loader';
 
 
 const AppliedListClient = () => {
@@ -20,7 +21,7 @@ const AppliedListClient = () => {
             </Helmet>
 
             {
-                loading ? 'loading' : (
+                loading ? <Loader /> : (
                     <section className="my-20 my-container text-white px-5 sm:px-10">
 
                         {

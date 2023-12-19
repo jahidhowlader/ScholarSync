@@ -5,9 +5,10 @@ const useIsAdmin = () => {
 
     // ALL STATE ARE HERE
     const [isAdmin, setIsAdmin] = useState(null)
+    const [loading, setLoading] = useState(true)
 
     // IMPORT AUTHCONTEXT
-    const { user, loading, setLoading } = useAuth()
+    const { user } = useAuth()
 
     // GET TOKEN FROM LOCAL STORAGE
     const token = localStorage.getItem('access-token')
@@ -31,7 +32,7 @@ const useIsAdmin = () => {
 
     }, [token, user, loading, setLoading])
 
-    return { isAdmin }
+    return { isAdmin, loading }
 };
 
 export default useIsAdmin;

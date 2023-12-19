@@ -22,7 +22,9 @@ const Login = () => {
     const { register, handleSubmit, reset, formState: { errors }, } = useForm()
 
     // IMPORT AUTHCONTEXT
-    const { signIn } = useAuth()
+    const { user, signIn } = useAuth()
+
+    if(user) navigate('/')
 
     // SUBMIT Or CREATE ACCOUNT
     const onSubmit = async (data) => {

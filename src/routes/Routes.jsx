@@ -9,6 +9,7 @@ import AppliedListClient from "../pages/dashboard/appliedListClient/AppliedListC
 import AppliedListAdmin from "../pages/dashboard/appliedListAdmin/AppliedListAdmin";
 import PrivateRoutes from "./PrivateRoutes";
 import AdminRoutes from "./AdminRoutes";
+import UserExistRoute from "./UserExistRoute";
 
 export const router = createBrowserRouter([
     {
@@ -21,11 +22,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/login',
-                element: <Login />
+                element: <UserExistRoute><Login /></UserExistRoute>
             },
             {
                 path: '/register',
-                element: <Register />
+                element: <UserExistRoute><Register /></UserExistRoute>
             },
             {
                 path: '/appliedListClient',

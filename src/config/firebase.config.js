@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA8duWMil4_4z2HrfH9vVf5BUXxrji2HZY",
-  authDomain: "scholarsync-client.firebaseapp.com",
-  projectId: "scholarsync-client",
-  storageBucket: "scholarsync-client.appspot.com",
-  messagingSenderId: "253223142738",
-  appId: "1:253223142738:web:b5972fd490de77ea83e68b"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId
 };
 
 // Initialize Firebase

@@ -6,10 +6,10 @@ import useIsAdmin from "../../hooks/useIsAdmin";
 const Navbar = () => {
 
     // IMPORT AUTHCONTEXT
-    const { user, logOut, loading } = useAuth()
+    const { user, logOut } = useAuth()
 
     // Check isAdmin
-    const { isAdmin } = useIsAdmin()
+    const { isAdmin, loading } = useIsAdmin()
 
     const navigation = useNavigate()
     // handlerLogout
@@ -28,14 +28,14 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="bg-black text-white py-4 shadow-sm shadow-primary-color">
+            {
+                loading ? 'loading' : (
+                    <nav className="bg-black text-white py-4 shadow-sm shadow-primary-color">
 
-                <div className="my-container flex justify-between items-center px-5 sm:px-10 ">
+                        <div className="my-container flex justify-between items-center px-5 sm:px-10 ">
 
-                    <Link to='/'><h1 className="text-[#5f01f2] font-bold italic text-2xl uppercase">Scholar<span className="text-white">Sync</span></h1></Link>
+                            <Link to='/'><h1 className="text-[#5f01f2] font-bold italic text-2xl uppercase">Scholar<span className="text-white">Sync</span></h1></Link>
 
-                    {
-                        loading ? '' : (
                             <ul className="lg:flex gap-10 uppercase hidden">
                                 <li>
                                     <NavLink
@@ -47,7 +47,7 @@ const Navbar = () => {
                                 </li>
 
                                 {
-                                    user && !isAdmin ? (
+                                    (user && !isAdmin && !loading) ? (
                                         <>
                                             <li>
                                                 <NavLink
@@ -64,7 +64,7 @@ const Navbar = () => {
                                                 </Link>
                                             </li>
                                         </>
-                                    ) : user && isAdmin ? (
+                                    ) : (user && isAdmin && !loading) ? (
                                         <>
                                             <li>
                                                 <NavLink
@@ -118,15 +118,15 @@ const Navbar = () => {
                                     user && <li className="opacity-70">{user?.displayName?.split(' ')[0]}</li>
                                 }
                             </ul>
-                        )
-                    }
 
-                    {/* SideBar Navigation */}
-                    <div className="relative lg:hidden">
-                        <Sidebar />
-                    </div>
-                </div>
-            </nav>
+                            {/* SideBar Navigation */}
+                            <div className="relative lg:hidden">
+                                <Sidebar />
+                            </div>
+                        </div>
+                    </nav>
+                )
+            }
         </>
     );
 };

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const useFetchWithHeader = (url) => {
     const [data, setData] = useState([])
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false);
 
     // GET TOKEN FROM LOCAL STORAGE
@@ -12,7 +12,7 @@ const useFetchWithHeader = (url) => {
 
     useEffect(() => {
 
-        setLoading(true)
+        // setLoading(true)
 
         fetch(`https://scholarsync-server-production.up.railway.app/api${url}`, {
             headers: {
@@ -23,7 +23,10 @@ const useFetchWithHeader = (url) => {
             .then(data => {
 
                 setData(data)
-                setLoading(false)
+                if(data?.length > 1){
+
+                    setLoading(false)
+                }
             })
     }, [token, url])
 
