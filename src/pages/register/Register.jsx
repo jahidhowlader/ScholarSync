@@ -40,7 +40,7 @@ const Register = () => {
         try {
 
             // SIGNUP WITH MONGODB
-            await axios.post('http://localhost:3000/api/auth/register', {
+            await axios.post('https://scholarsync-server-production.up.railway.app/api/auth/register', {
                 username,
                 email,
                 password

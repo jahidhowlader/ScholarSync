@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion"
 import { HiBars3CenterLeft } from "react-icons/hi2";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import './sidebar.css'
 import { TfiClose } from "react-icons/tfi";
 import useAuth from "../../../hooks/useAuth";
+import useIsAdmin from "../../../hooks/useIsAdmin";
 
 const isMobile = window.innerWidth < 500;
 
@@ -39,34 +40,24 @@ const Sidebar = () => {
 
     const [click, setClick] = useState(false)
 
-    // ALL STATE ARE HERE
-    const [isAdmin, setIsAdmin] = useState(null)
+    const { user, logOut } = useAuth()
 
-    // IMPORT AUTHCONTEXT
-    const { user, logOut, loading, setLoading } = useAuth()
+    // Check isAdmin
+    const { isAdmin } = useIsAdmin()
 
-    // GET TOKEN FROM LOCAL STORAGE
-    const token = localStorage.getItem('access-token')
+    const navigation = useNavigate()
+    // handlerLogout
+    const handlerLogout = async () => {
 
-    useEffect(() => {
+        try {
 
-        if (user) {
+            await logOut()
+            navigation('/login')
 
-            fetch(`http://localhost:3000/api/users/${user?.email}`, {
-                method: "GET",
-                headers: {
-                    authorization: token
-                }
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    setIsAdmin(data)
-                    setLoading(false)
-                })
+        } catch (e) {
+            console.log(e);
         }
-
-    }, [token, user, loading, setLoading])
+    }
 
     // TODO: SCROLL OFF
     return (
@@ -103,16 +94,19 @@ const Sidebar = () => {
                                     user && !isAdmin ? (
                                         <>
                                             <li className="flex gap-3">
-                                                <span>02</span>
                                                 <NavLink
                                                     to="/appliedListClient"
                                                     className={({ isActive }) => isActive ? "opacity-100 font-medium" : "opacity-70"}
                                                 >
+                                                    <span className="pr-3">02</span>
+
                                                     APPLIED LIST
                                                 </NavLink>
                                             </li>
 
-                                            <li onClick={async () => await logOut()}>
+                                            <li onClick={handlerLogout}>
+                                                <span className="pr-3 opacity-70">03</span>
+
                                                 <Link to="/" className="opacity-70">
                                                     LOGOUT
                                                 </Link>
@@ -141,9 +135,9 @@ const Sidebar = () => {
                                                 </NavLink>
                                             </li>
 
-                                            <li onClick={async () => await logOut()}>
+                                            <li onClick={handlerLogout}>
                                                 <Link to="/" className="opacity-70">
-                                                <span className="pr-3">04</span>
+                                                    <span className="pr-3">04</span>
                                                     LOGOUT
                                                 </Link>
                                             </li>
@@ -155,6 +149,8 @@ const Sidebar = () => {
                                                     to="/login"
                                                     className={({ isActive }) => isActive ? "opacity-100 font-medium" : "opacity-70"}
                                                 >
+                                                    <span className="pr-3">02</span>
+
                                                     LOGIN
                                                 </NavLink>
                                             </li>
@@ -164,6 +160,7 @@ const Sidebar = () => {
                                                     to="/register"
                                                     className={({ isActive }) => isActive ? "opacity-100 font-medium" : "opacity-70"}
                                                 >
+                                                    <span className="pr-3">03</span>
                                                     REGISTER
                                                 </NavLink>
                                             </li>

@@ -1,5 +1,4 @@
 import { Link, useNavigate } from 'react-router-dom';
-// import SocialLogin from '../../../components/socialLogin/SocialLogin';
 import { useForm } from 'react-hook-form';
 import { HiEye, HiEyeSlash } from 'react-icons/hi2';
 import { useState } from 'react';
@@ -35,7 +34,7 @@ const Login = () => {
 
         try {
 
-            await axios.post('http://localhost:3000/api/auth/login', {
+            await axios.post('https://scholarsync-server-production.up.railway.app/api/auth/login', {
                 email, password
             })
 

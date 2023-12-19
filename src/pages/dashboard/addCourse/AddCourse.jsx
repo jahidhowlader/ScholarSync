@@ -2,11 +2,12 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { IoIosAddCircleOutline } from "react-icons/io";
-import { IoTrashBinOutline, IoTrashBinSharp } from "react-icons/io5";
+import { IoTrashBinSharp } from "react-icons/io5";
 import './addCourse.css'
 import Loader from "../../../components/loader/Loader";
 import { Helmet } from "react-helmet-async";
-
+import useIsAdmin from "../../../hooks/useIsAdmin";
+import { useNavigate } from "react-router-dom";
 
 const AddCourse = () => {
 
@@ -62,7 +63,7 @@ const AddCourse = () => {
 
         try {
 
-            await fetch('http://localhost:3000/api/courses', {
+            await fetch('https://scholarsync-server-production.up.railway.app/api/courses', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -72,7 +73,7 @@ const AddCourse = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
+
                     toast.success(data.message)
                     reset()
                     setImgUrl(null)
@@ -80,16 +81,23 @@ const AddCourse = () => {
 
                 })
 
-
         } catch (e) {
 
             console.log(e);
-            // toast.error(e.response.data.message);
             setSubmitLoading(false)
 
         }
     }
 
+    const { isAdmin } = useIsAdmin()
+
+    const navigation = useNavigate()
+    if (isAdmin === false) {
+
+        navigation('/')
+    }
+
+    // console.log(93, isAdmin === false);
 
     return (
         <>

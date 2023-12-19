@@ -7,6 +7,8 @@ import Login from "../pages/login/Login";
 import AddCourse from "../pages/dashboard/addCourse/AddCourse";
 import AppliedListClient from "../pages/dashboard/appliedListClient/AppliedListClient";
 import AppliedListAdmin from "../pages/dashboard/appliedListAdmin/AppliedListAdmin";
+import PrivateRoutes from "./PrivateRoutes";
+import AdminRoutes from "./AdminRoutes";
 
 export const router = createBrowserRouter([
     {
@@ -27,15 +29,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/appliedListClient',
-                element: <AppliedListClient />
+                element: <PrivateRoutes><AppliedListClient /></PrivateRoutes>
             },
             {
                 path: '/addCourse',
-                element: <AddCourse />
+                element: <AdminRoutes><AddCourse /></AdminRoutes>
             },
             {
                 path: '/appliedListAdmin',
-                element: <AppliedListAdmin />
+                element: <AdminRoutes><AppliedListAdmin /></AdminRoutes>
             }
         ]
     }

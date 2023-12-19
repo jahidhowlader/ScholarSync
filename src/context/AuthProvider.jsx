@@ -77,7 +77,7 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser)
 
             if (currentUser) {
-                axios.post('http://localhost:3000/api/jwt', { email: currentUser.email })
+                axios.post('https://scholarsync-server-production.up.railway.app/api/jwt', { email: currentUser.email })
                     .then(data => {
 
                         localStorage.setItem('access-token', data.data.token)

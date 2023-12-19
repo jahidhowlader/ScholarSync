@@ -1,38 +1,30 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import { useEffect, useState } from "react";
 import Sidebar from "./sidebar/Sidebar";
+import useIsAdmin from "../../hooks/useIsAdmin";
 
 const Navbar = () => {
 
-    // ALL STATE ARE HERE
-    const [isAdmin, setIsAdmin] = useState(null)
-
     // IMPORT AUTHCONTEXT
-    const { user, logOut, loading, setLoading } = useAuth()
+    const { user, logOut, loading } = useAuth()
 
-    // GET TOKEN FROM LOCAL STORAGE
-    const token = localStorage.getItem('access-token')
+    // Check isAdmin
+    const { isAdmin } = useIsAdmin()
 
-    useEffect(() => {
+    const navigation = useNavigate()
+    // handlerLogout
+    const handlerLogout = async () => {
 
-        if (user) {
+        try {
 
-            fetch(`http://localhost:3000/api/users/${user?.email}`, {
-                method: "GET",
-                headers: {
-                    authorization: token
-                }
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    setIsAdmin(data)
-                    setLoading(false)
-                })
+            await logOut()
+            navigation('/login')
+
+        } catch (e) {
+            console.log(e);
         }
+    }
 
-    }, [token, user, loading, setLoading])
 
     return (
         <>
@@ -43,7 +35,7 @@ const Navbar = () => {
                     <Link to='/'><h1 className="text-[#5f01f2] font-bold italic text-2xl uppercase">Scholar<span className="text-white">Sync</span></h1></Link>
 
                     {
-                        loading ? 'loading' : (
+                        loading ? '' : (
                             <ul className="lg:flex gap-10 uppercase hidden">
                                 <li>
                                     <NavLink
@@ -66,7 +58,7 @@ const Navbar = () => {
                                                 </NavLink>
                                             </li>
 
-                                            <li onClick={async () => await logOut()}>
+                                            <li onClick={handlerLogout}>
                                                 <Link to="/" className="opacity-70">
                                                     LOGOUT
                                                 </Link>
@@ -92,7 +84,7 @@ const Navbar = () => {
                                                 </NavLink>
                                             </li>
 
-                                            <li onClick={async () => await logOut()}>
+                                            <li onClick={handlerLogout}>
                                                 <Link to="/" className="opacity-70">
                                                     LOGOUT
                                                 </Link>
