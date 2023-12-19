@@ -104,7 +104,7 @@ const AddCourse = () => {
 
             {/* Ttile */}
             <Helmet>
-                <title>Add Course | Snap Academy</title>
+                <title>Add Course | ScholarSync</title>
             </Helmet>
 
 

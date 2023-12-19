@@ -69,7 +69,7 @@ const Login = () => {
         <>
             {/* Ttile */}
             <Helmet>
-                <title>Login | Snap Academy</title>
+                <title>Login | ScholarSync</title>
             </Helmet>
 
             <div className="my-container text-white min-h-[calc(100vh-90px)] grid lg:grid-cols-2 items-center relative sm:px-10">

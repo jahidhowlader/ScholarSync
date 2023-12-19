@@ -12,7 +12,7 @@ const Home = () => {
 
             {/* Ttile */}
             <Helmet>
-                <title>Snap Academy</title>
+                <title>ScholarSync</title>
             </Helmet>
 
            <Banner />

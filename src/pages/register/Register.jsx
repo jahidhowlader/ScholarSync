@@ -92,7 +92,7 @@ const Register = () => {
         <>
             {/* Ttile */}
             <Helmet>
-                <title>Register | Snap Academy</title>
+                <title>Register | ScholarSync</title>
             </Helmet>
 
             <div className="my-container text-white min-h-[calc(100vh-90px)] grid lg:grid-cols-2 items-center relative">

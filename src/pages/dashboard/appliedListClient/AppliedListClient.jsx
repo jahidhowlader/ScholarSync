@@ -17,7 +17,7 @@ const AppliedListClient = () => {
         <>
             {/* Ttile */}
             <Helmet>
-                <title>Applied List | </title>
+                <title>Applied List | ScholarSync</title>
             </Helmet>
 
             {
