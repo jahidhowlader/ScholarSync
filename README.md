@@ -1,8 +1,26 @@
-# React + Vite
+# ScholarSync
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Live Server Link: [https://scholarsync-client.web.app](https://scholarsync-client.web.app)
 
-Currently, two official plugins are available:
+This website is built with the **MERN** stack. Total courses are shown in the home route. After selecting the user, all the selected lists will be displayed in the Applied List route.
+<br>
+Admin will have permission to **add new courses and approve or reject** user admission as well. All routes are secured with **JSON Web Tokens (JWT)**. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* **Overall Performence** <br> <br> ![alt Performence](https://i.ibb.co/gV00yjL/performence.png)
+
+### Tech Stack
+    - MongoDB: Database
+    - Express.js: Backend Framework
+    - React: Frontend Library
+    - Node.js: Backend JavaScript Runtime
+    - Firebase (Authentication)
+    - Tailwind
+
+### LibraryStack
+    - React Hook Form
+    - Skeleton (React Content loader)
+    - Lottie
+    - Framer Motion
+    - Axios
+    - Prop Validation
+    - JSON WEB TOKEN (JWT)
