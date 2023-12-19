@@ -34,92 +34,88 @@ const Navbar = () => {
 
                     <Link to='/'><h1 className="text-[#5f01f2] font-bold italic text-2xl uppercase">Scholar<span className="text-white">Sync</span></h1></Link>
 
-                    {
-                        loading ? '' : (
-                            <ul className="lg:flex gap-10 uppercase hidden">
-                                <li>
-                                    <NavLink
-                                        to="/"
-                                        className={({ isActive }) => isActive ? "opacity-100 font-medium" : "opacity-70"}
-                                    >
-                                        HOME
-                                    </NavLink>
-                                </li>
+                    <ul className="lg:flex gap-10 uppercase hidden">
+                        <li>
+                            <NavLink
+                                to="/"
+                                className={({ isActive }) => isActive ? "opacity-100 font-medium" : "opacity-70"}
+                            >
+                                HOME
+                            </NavLink>
+                        </li>
 
-                                {
-                                    (user && !isAdmin && !loading) ? (
-                                        <>
-                                            <li>
-                                                <NavLink
-                                                    to="/appliedListClient"
-                                                    className={({ isActive }) => isActive ? "opacity-100 font-medium" : "opacity-70"}
-                                                >
-                                                    APPLIED LIST
-                                                </NavLink>
-                                            </li>
+                        {
+                            (user && !isAdmin && !loading) ? (
+                                <>
+                                    <li>
+                                        <NavLink
+                                            to="/appliedListClient"
+                                            className={({ isActive }) => isActive ? "opacity-100 font-medium" : "opacity-70"}
+                                        >
+                                            APPLIED LIST
+                                        </NavLink>
+                                    </li>
 
-                                            <li onClick={handlerLogout}>
-                                                <Link to="/" className="opacity-70">
-                                                    LOGOUT
-                                                </Link>
-                                            </li>
-                                        </>
-                                    ) : (user && isAdmin && !loading) ? (
-                                        <>
-                                            <li>
-                                                <NavLink
-                                                    to="/addCourse"
-                                                    className={({ isActive }) => isActive ? "opacity-100 font-medium" : "opacity-70"}
-                                                >
-                                                    ADD COURSE
-                                                </NavLink>
-                                            </li>
+                                    <li onClick={handlerLogout}>
+                                        <Link to="/" className="opacity-70">
+                                            LOGOUT
+                                        </Link>
+                                    </li>
+                                </>
+                            ) : (user && isAdmin && !loading) ? (
+                                <>
+                                    <li>
+                                        <NavLink
+                                            to="/addCourse"
+                                            className={({ isActive }) => isActive ? "opacity-100 font-medium" : "opacity-70"}
+                                        >
+                                            ADD COURSE
+                                        </NavLink>
+                                    </li>
 
-                                            <li>
-                                                <NavLink
-                                                    to="/appliedListAdmin"
-                                                    className={({ isActive }) => isActive ? "opacity-100 font-medium" : "opacity-70"}
-                                                >
-                                                    APPLIED LIST
-                                                </NavLink>
-                                            </li>
+                                    <li>
+                                        <NavLink
+                                            to="/appliedListAdmin"
+                                            className={({ isActive }) => isActive ? "opacity-100 font-medium" : "opacity-70"}
+                                        >
+                                            APPLIED LIST
+                                        </NavLink>
+                                    </li>
 
-                                            <li onClick={handlerLogout}>
-                                                <Link to="/" className="opacity-70">
-                                                    LOGOUT
-                                                </Link>
-                                            </li>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <li>
-                                                <NavLink
-                                                    to="/login"
-                                                    className={({ isActive }) => isActive ? "opacity-100 font-medium" : "opacity-70"}
-                                                >
-                                                    LOGIN
-                                                </NavLink>
-                                            </li>
+                                    <li onClick={handlerLogout}>
+                                        <Link to="/" className="opacity-70">
+                                            LOGOUT
+                                        </Link>
+                                    </li>
+                                </>
+                            ) : (
+                                <>
+                                    <li>
+                                        <NavLink
+                                            to="/login"
+                                            className={({ isActive }) => isActive ? "opacity-100 font-medium" : "opacity-70"}
+                                        >
+                                            LOGIN
+                                        </NavLink>
+                                    </li>
 
-                                            <li>
-                                                <NavLink
-                                                    to="/register"
-                                                    className={({ isActive }) => isActive ? "opacity-100 font-medium" : "opacity-70"}
-                                                >
-                                                    REGISTER
-                                                </NavLink>
-                                            </li>
+                                    <li>
+                                        <NavLink
+                                            to="/register"
+                                            className={({ isActive }) => isActive ? "opacity-100 font-medium" : "opacity-70"}
+                                        >
+                                            REGISTER
+                                        </NavLink>
+                                    </li>
 
-                                        </>
-                                    )
-                                }
+                                </>
+                            )
+                        }
 
-                                {
-                                    user && <li className="opacity-70">{user?.displayName?.split(' ')[0]}</li>
-                                }
-                            </ul>
-                        )
-                    }
+                        {
+                            user && <li className="opacity-70">{user?.displayName?.split(' ')[0]}</li>
+                        }
+                    </ul>
 
                     {/* SideBar Navigation */}
                     <div className="relative lg:hidden">
