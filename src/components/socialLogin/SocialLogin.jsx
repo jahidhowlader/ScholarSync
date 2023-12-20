@@ -12,15 +12,32 @@ const SocialLogin = () => {
     // handler Google signin
     const handlerGoogleSignin = async () => {
 
-        try {
-            // SIGNUP OR SIGNIN WITH GOOGLE
-            await googleSignin()
-            navigate('/')
+        // SIGNUP OR SIGNIN WITH GOOGLE
+        googleSignin()
+            .then(result => {
 
-        } catch (e) {
-            console.log(e);
-        }
+                const logedinUser = result.user
+
+                const savedUser = {
+                    username: logedinUser?.displayName,
+                    email: logedinUser?.email,
+                }
+
+                fetch('https://scholarsync-server-production.up.railway.app/api/auth/googleSignin', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "Application/json"
+                    },
+                    body: JSON.stringify(savedUser)
+                })
+                    .then(res => res.json())
+                    .then(() => {
+
+                        navigate('/')
+                    })
+            })
     }
+
     return (
         <>
             <div className='flex items-center w-1/2 lg:w-3/4 lg:px-5'>

@@ -12,8 +12,6 @@ const useFetchWithHeader = (url) => {
 
     useEffect(() => {
 
-        // setLoading(true)
-
         fetch(`https://scholarsync-server-production.up.railway.app/api${url}`, {
             headers: {
                 authorization: token
@@ -23,11 +21,22 @@ const useFetchWithHeader = (url) => {
             .then(data => {
 
                 setData(data)
-                if(data?.length > 1){
+                if (data?.length > 0) {
 
                     setLoading(false)
                 }
+
+                if (data?.length === 0) {
+
+                    setLoading(false)
+                }
+
             })
+            // .catch(e => {
+            //     setLoading(false)
+            //     console.log(e);
+            // })
+
     }, [token, url])
 
     const reFetch = async () => {
@@ -46,7 +55,7 @@ const useFetchWithHeader = (url) => {
 
             setError(err);
         }
-        
+
         setLoading(false);
     }
 
